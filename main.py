@@ -16,6 +16,7 @@ driver = webdriver.Chrome(service=service)
 
 # Starting website
 driver.get("https://nutrition.sa.ucsc.edu/")
+#driver.get("https://nutrition.sa.ucsc.edu/label.aspx?locationNum=40&locationName=College+Nine%2fJohn+R.+Lewis+Dining+Hall&dtdate=04%2f11%2f2022&RecNumAndPort=061003*1")
 
 
 def moveToNutritionPage():
@@ -45,13 +46,26 @@ def splitAllFoods(lst):
             tmp = []
             continue
         tmp.append(i)
+    newLst.append(tmp) #Last one
 
     return newLst
 
 
 
 def singleNutritionFact():
-    pass
+    nutrition_facts_table = WebDriverWait(driver, timeout=3).until(lambda d: d.find_element(By.XPATH, '//table[@bordercolorlight="#000000"]'))
+    #print(nutrition_facts_table.text)
+    food_name = WebDriverWait(driver, timeout=3).until(lambda d: d.find_element(By.CLASS_NAME, 'labelrecipe'))
+    print(food_name.text)
+    arr = nutrition_facts_table.text.split("\n")
+    serving_size = arr[1]
+    arr = arr[9:]
+    arr.append(serving_size)
+    arr.append(food_name.text)
+    for i in range(len(arr)):
+        arr[i] = arr[i].lstrip()
+    print(arr)
+
 
 
 # Must call moveToNutritionPage() before calling this function.
@@ -76,18 +90,21 @@ def getNutritionFacts():
             all_foods.append(getElement.text)
 
     all_foods = all_foods[1:] #Removing the -- from the first index
+    #print(all_foods)
     split_foods = splitAllFoods(all_foods)
-    print(split_foods)
+    #print(split_foods)
 
     for i in range(len(split_foods)):
         for j in range(1,len(split_foods[i])):
             link = WebDriverWait(driver, timeout=3).until(lambda d: d.find_element(By.LINK_TEXT, split_foods[i][j]))
             link.click()
+            singleNutritionFact()
             driver.back()
 
 if __name__ == '__main__':
     moveToNutritionPage()
     # print(driver.current_url)
     getNutritionFacts()
+    #singleNutritionFact()
     time.sleep(1)
     driver.quit()
