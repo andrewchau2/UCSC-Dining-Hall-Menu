@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import time
 import json
@@ -9,8 +10,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
 driver_path = "C:\Program Files (x86)\chromedriver.exe"
+
+chrome_options = Options()
+chrome_options.headless = True
+
 service = Service(executable_path=driver_path)
-driver = webdriver.Chrome(service=service)
+driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # Starting website
 driver.get("https://nutrition.sa.ucsc.edu/")
