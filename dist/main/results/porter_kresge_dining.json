@@ -1,0 +1,513 @@
+[
+{
+    "food_type": "Breakfast",
+    "food_name": "Belgian Waffle Squares",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Breakfast",
+    "food_name": "Hard-boiled Cage Free Egg (1)",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Breakfast",
+    "food_name": "Natural BridgesTofu Scramble",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Breakfast",
+    "food_name": "Organic Oatmeal Gluten-Free",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Breakfast",
+    "food_name": "Shredded Hash Browns",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Breakfast",
+    "food_name": "Turkey Sausage Egg & Cheese Biscuit",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Breakfast",
+    "food_name": "Turkey Sausage Patty",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Entrees",
+    "food_name": "Cage-Free Scrambled Eggs",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Clean Plate",
+    "food_name": "Steamed Rice",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Bakery",
+    "food_name": "Banana Muffin, ea",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Bakery",
+    "food_name": "Cherry Turnovers",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Bakery",
+    "food_name": "Three Berry Muffin",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Cereal",
+    "food_name": "Organic Gluten-Free Corn Flakes",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Cereal",
+    "food_name": "Raisin Bran",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Cereal",
+    "food_name": "Rice Crispy",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Cereal",
+    "food_name": "Toasty Os",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Cereal",
+    "food_name": "Tootie Frooties",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Apples",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Banana",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Blueberries",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Cantaloupe Melon",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Cottage Cheese",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Fresh Pineapple",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Fuji Apples",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Green Grapes",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Hard Boiled Egg",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Honeydew Melon",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Oranges",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Pear Slices",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Pears",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Pineapple Chunks",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Plain Coconut Milk Yogurt",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Plain Greek Yogurt",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Plums",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Red Grapes",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Ruby Red Grapefruit",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Sliced Peaches",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Vegan Cream Cheese",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "All Day",
+    "food_name": "Watermelon",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Almond Butter",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Asian Sesame Dressing",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "BBQ Sauce",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Balsamic Vinaigrette",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Bragg's Liquid Aminos",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Cholula",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Tamari Soy Sauce",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Grated Parmesan Cheese",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Guacamole Supreme",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Honey Mustard",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Imitation Maple Syrup",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Ken's Ranch",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Ketchup",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Mustard",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Nutritional Yeast",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Organic Agave Syrup",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Organic Vegan Sugar",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Pico de Gallo Salsa",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Pure Clover Honey",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Salsa Picante",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Salted Butter",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Shredded Parmesan Cheese",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Sour Cream",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Sriracha Hot Chili Sauce",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Strawberry Jam",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Tabasco Green Pepper Sauce",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Tabasco Pepper Sauce",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Tajin Seasoning",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Tapatio Salsa Picante",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Unsalted Butter",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Vegan Butter Spread",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Condiments",
+    "food_name": "Vegan Mayonnaise",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Breakfast Bar",
+    "food_name": "Oven Roasted Turkey Breast",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Breakfast Bar",
+    "food_name": "Plain Cream Cheese",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Breakfast Bar",
+    "food_name": "Sliced Ham",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Bread and Bagels",
+    "food_name": "Cinnamon Raisin Bread",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Bread and Bagels",
+    "food_name": "Large Sliced Sourdough",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Bread and Bagels",
+    "food_name": "Sara Lee Blueberry Bagel",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Bread and Bagels",
+    "food_name": "Sara Lee Everything Bagel",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Bread and Bagels",
+    "food_name": "Sliced White Bread",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Bread and Bagels",
+    "food_name": "Sourdough English Muffin",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Bread and Bagels",
+    "food_name": "Sweet French Hoagie Roll",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Bread and Bagels",
+    "food_name": "Udi's Multigrain Bread",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Bread and Bagels",
+    "food_name": "Whole Wheat Bread",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "2% Lactose Free Milk",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Apple Juice",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Brisk Iced Tea",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Califia Original Almond Milk",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Cranberry Juice",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Diet Pepsi",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Dr. Pepper",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Gatorade Fruit Punch",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Mountain Dew",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Nonfat Milk",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Orange Crush",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Orange Juice",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Organic French Roast Coffee",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Passion Orange Guava Juice",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Pepsi",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Pink Lemonade",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Plain Soy Milk",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Sierra Mist",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+{
+    "food_type": "Beverages",
+    "food_name": "Whole Milk",
+    "dining_hall": "Porter/Kresge Dining Hall"
+},
+
+]
