@@ -2,14 +2,16 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import time
+import shutil
 import json
+import os
 from selenium.webdriver.common.by import By
 
 
 # Setup for web scrap. Path needs to change for chromedriver.exe once uploaded in the cloud.
 from selenium.webdriver.support.wait import WebDriverWait
 
-driver_path = "C:\Program Files (x86)\chromedriver.exe"
+driver_path = "./chromedriver.exe"
 
 chrome_options = Options()
 chrome_options.headless = True
@@ -72,7 +74,7 @@ def singleNutritionFact(split_foods, count):
         lambda d: d.find_element(By.XPATH, '//table[@bordercolorlight="#000000"]'))
     # print(nutrition_facts_table.text)
     food_name = WebDriverWait(driver, timeout=3).until(lambda d: d.find_element(By.CLASS_NAME, 'labelrecipe'))
-    print(food_name.text)
+    #print(food_name.text)
 
     arr = nutrition_facts_table.text.split("\n")
     serving_size = arr[1]
@@ -123,10 +125,11 @@ def getNutritionFacts(dining_hall):
             getElement = inner_table[i].find_element(By.CLASS_NAME, "longmenucoldispname")
             all_foods.append(getElement.text)
 
-    print(all_foods)
+    #print(all_foods)
     split_foods = splitAllFoods(all_foods, dining_hall)
-    print(split_foods)
+    #print(split_foods)
     convertToJSON(split_foods, dining_hall)
+    print("Webscrap " + dining_hall + " Successful")
 
 
     # CODE BELOW THIS POINT IS FOR SPRINT 2: SCRAPPING NUTRITION FACTS
@@ -157,14 +160,37 @@ def convertToJSON(split_foods, dining_hall):
     ofstrm.write('\n]')
     ofstrm.close()
 
+    shutil.move('./' + file_name, './results')
+
+#Removes the current JSON and replaces it with updated ones when the program ends
+def removeCurrentJSON():
+    if os.path.exists("./results/college_nine_john_lewis_dining.json"):
+        os.remove("./results/college_nine_john_lewis_dining.json")
+
+    if os.path.exists('./results/cowell_stevenson_dining.json'):
+        os.remove('./results/cowell_stevenson_dining.json')
+
+    if os.path.exists('./results/crown_merrill_dining.json'):
+        os.remove('./results/crown_merrill_dining.json')
+
+    if os.path.exists('./results/porter_kresge_dining.json'):
+        os.remove('./results/porter_kresge_dining.json')
+
 
 if __name__ == '__main__':
     dining_halls = ['College Nine/John R. Lewis Dining Hall', 'Cowell/Stevenson Dining Hall',
                     'Crown/Merrill Dining Hall', 'Porter/Kresge Dining Hall']
 
+    removeCurrentJSON()
+
+
     for i in dining_halls:
-        moveToNutritionPage(i)
-        getNutritionFacts(i)
+        try:
+            moveToNutritionPage(i)
+            getNutritionFacts(i)
+        except:
+            print("Failed to extract a dining hall")
+            continue
 
     # driver.get("https://nutrition.sa.ucsc.edu/")
     # time.sleep(1)
