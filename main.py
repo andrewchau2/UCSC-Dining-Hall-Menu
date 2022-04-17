@@ -1,17 +1,29 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+from sys import platform
 import time
 import shutil
 import json
 import os
 from selenium.webdriver.common.by import By
 
-
 # Setup for web scrap. Path needs to change for chromedriver.exe once uploaded in the cloud.
 from selenium.webdriver.support.wait import WebDriverWait
 
-driver_path = "./chromedriver.exe"
+if platform == "linux" or platform == "linux2":
+    driver_path = "./chromedriverLinux"
+    # linux
+elif platform == "darwin":
+    driver_path = "./chromedriverMacOS"
+    # OS X
+elif platform == "win32":
+    driver_path = "./chromedriver.exe"
+    # Windows...
+else:
+    driver_path = "ERROR"
+
+print(platform)
 
 chrome_options = Options()
 chrome_options.headless = True
@@ -153,10 +165,16 @@ def convertToJSON(split_foods, dining_hall):
         file_name = 'porter_kresge_dining.json'
 
     ofstrm = open(file_name, 'w')
+    size = len(split_foods)
+    count = 0
     ofstrm.write('[\n')
     for i in split_foods:
         json.dump(i, ofstrm, indent=4)
-        ofstrm.write(",\n")
+        count += 1
+        if count == size:
+            ofstrm.write("\n")
+        if count != size:
+            ofstrm.write(",\n")
     ofstrm.write('\n]')
     ofstrm.close()
 
