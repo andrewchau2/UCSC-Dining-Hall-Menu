@@ -11,11 +11,8 @@ from selenium.webdriver.common.by import By
 # Setup for web scrap. Path needs to change for chromedriver.exe once uploaded in the cloud.
 from selenium.webdriver.support.wait import WebDriverWait
 
-if platform == "linux" or platform == "linux2":
-    driver_path = "./chromedriverLinux"
-    # linux
-elif platform == "darwin":
-    driver_path = "./chromedriverMacOS"
+if platform == "darwin":
+    driver_path = "./chromedriver"
     # OS X
 elif platform == "win32":
     driver_path = "./chromedriver.exe"
@@ -30,7 +27,6 @@ chrome_options.headless = True
 
 service = Service(executable_path=driver_path)
 driver = webdriver.Chrome(service=service, options=chrome_options)
-
 # Starting website
 driver.get("https://nutrition.sa.ucsc.edu/")
 
@@ -140,7 +136,7 @@ def getNutritionFacts(dining_hall):
     #print(all_foods)
     split_foods = splitAllFoods(all_foods, dining_hall)
     #print(split_foods)
-    convertToJSON(split_foods, dining_hall)
+    convertToJSON(split_foods)
     print("Webscrap " + dining_hall + " Successful")
 
 
@@ -153,21 +149,21 @@ def getNutritionFacts(dining_hall):
     #     singleNutritionFact(split_foods, i)
     #     driver.back()
 
-#Converts the list of dictionaries for split_foods into a JSON file based on the dining hall
-def convertToJSON(split_foods, dining_hall):
-    if dining_hall == 'College Nine/John R. Lewis Dining Hall':
-        file_name = 'college_nine_john_lewis_dining.json'
-    elif dining_hall == 'Cowell/Stevenson Dining Hall':
-        file_name = 'cowell_stevenson_dining.json'
-    elif dining_hall == 'Crown/Merrill Dining Hall':
-        file_name = 'crown_merrill_dining.json'
-    else:
-        file_name = 'porter_kresge_dining.json'
 
-    ofstrm = open(file_name, 'w')
+isFirstInput = True
+
+#Converts the list of dictionaries for split_foods into a JSON file based on the dining hall
+def convertToJSON(split_foods):
+    file_name = "food_results.json"
+    ofstrm = open(file_name, 'a+')
     size = len(split_foods)
     count = 0
-    ofstrm.write('[\n')
+    global isFirstInput
+
+    if isFirstInput:
+        isFirstInput = False
+    else:
+        ofstrm.write(",")
     for i in split_foods:
         json.dump(i, ofstrm, indent=4)
         count += 1
@@ -175,25 +171,12 @@ def convertToJSON(split_foods, dining_hall):
             ofstrm.write("\n")
         if count != size:
             ofstrm.write(",\n")
-    ofstrm.write('\n]')
     ofstrm.close()
-
-    shutil.move('./' + file_name, './results')
 
 #Removes the current JSON and replaces it with updated ones when the program ends
 def removeCurrentJSON():
-    if os.path.exists("./results/college_nine_john_lewis_dining.json"):
-        os.remove("./results/college_nine_john_lewis_dining.json")
-
-    if os.path.exists('./results/cowell_stevenson_dining.json'):
-        os.remove('./results/cowell_stevenson_dining.json')
-
-    if os.path.exists('./results/crown_merrill_dining.json'):
-        os.remove('./results/crown_merrill_dining.json')
-
-    if os.path.exists('./results/porter_kresge_dining.json'):
-        os.remove('./results/porter_kresge_dining.json')
-
+    if os.path.exists("./results/food_results.json"):
+        os.remove("./results/food_results.json")
 
 if __name__ == '__main__':
     dining_halls = ['College Nine/John R. Lewis Dining Hall', 'Cowell/Stevenson Dining Hall',
@@ -201,6 +184,8 @@ if __name__ == '__main__':
 
     removeCurrentJSON()
 
+    with open('food_results.json', 'a+') as op:
+        op.write('[\n');
 
     for i in dining_halls:
         try:
@@ -209,6 +194,10 @@ if __name__ == '__main__':
         except:
             print("Failed to extract a dining hall")
             continue
+
+    with open('food_results.json', 'a+') as op:
+        op.write(']');
+    shutil.move('./food_results.json', './results')
 
     # driver.get("https://nutrition.sa.ucsc.edu/")
     # time.sleep(1)
