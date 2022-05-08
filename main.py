@@ -45,6 +45,7 @@ driver.get("https://nutrition.sa.ucsc.edu/")  # Starting website
 # All get functions are called within singleNutrientFacts()
 ###########################################################################################
 
+# Used as an helper for the getter functions. Returns elem based on XPATH given
 def searchNutritionFactBoxHTML(xpath_val):
     try:
         result_elem = WebDriverWait(driver, timeout=1).until(
@@ -82,8 +83,9 @@ def getTotalFat(split_foods, count):
 
 
 def getTotalFat_DV(split_foods, count):
-    split_foods[count]['total_fat_DV'] = searchNutritionFactBoxHTML(
+    result = searchNutritionFactBoxHTML(
         '/html/body/table[1]/tbody/tr/td/table/tbody/tr[2]/td[2]/font[1]/b')
+    split_foods[count]['total_fat_DV'] = None if result == '' else result
 
 
 def getSatFat(split_foods, count):
@@ -92,8 +94,9 @@ def getSatFat(split_foods, count):
 
 
 def getSatFat_DV(split_foods, count):
-    split_foods[count]['sat_fat_DV'] = searchNutritionFactBoxHTML(
+    result = searchNutritionFactBoxHTML(
         '/html/body/table[1]/tbody/tr/td/table/tbody/tr[3]/td[2]/font[1]/b')
+    split_foods[count]['sat_fat_DV'] = None if result == '' else result
 
 
 def getTransFat(split_foods, count):
@@ -107,8 +110,9 @@ def getCholesterol(split_foods, count):
 
 
 def getCholesterol_DV(split_foods, count):
-    split_foods[count]['cholesterol_DV'] = searchNutritionFactBoxHTML(
+    result = searchNutritionFactBoxHTML(
         '/html/body/table[1]/tbody/tr/td/table/tbody/tr[5]/td[2]/font[1]/b')
+    split_foods[count]['cholesterol_DV'] = None if result == '' else result
 
 
 def getSodium(split_foods, count):
@@ -117,8 +121,9 @@ def getSodium(split_foods, count):
 
 
 def getSodiumDV(split_foods, count):
-    split_foods[count]['sodium_DV'] = searchNutritionFactBoxHTML(
+    result = searchNutritionFactBoxHTML(
         '/html/body/table[1]/tbody/tr/td/table/tbody/tr[6]/td[2]/font[1]/b')
+    split_foods[count]['sodium_DV'] = None if result == '' else result
 
 
 def getTotalCarbs(split_foods, count):
@@ -127,23 +132,27 @@ def getTotalCarbs(split_foods, count):
 
 
 def getTotalCarbs_DV(split_foods, count):
-    split_foods[count]['total_carbs_DV'] = searchNutritionFactBoxHTML(
+    result = searchNutritionFactBoxHTML(
         '/html/body/table[1]/tbody/tr/td/table/tbody/tr[2]/td[4]/font[1]/b')
+    split_foods[count]['total_carbs_DV'] = None if result == '' else result
 
 
 def getDietaryFiber(split_foods, count):
-    split_foods[count]['dietary_fiber'] = searchNutritionFactBoxHTML(
+    result = searchNutritionFactBoxHTML(
         '/html/body/table[1]/tbody/tr/td/table/tbody/tr[3]/td[3]/font[2]')
+    split_foods[count]['dietary_fiber'] = '- - - g' if result is None else result
 
 
 def getDietaryFiber_DV(split_foods, count):
-    split_foods[count]['dietary_fiber_DV'] = searchNutritionFactBoxHTML(
+    result = searchNutritionFactBoxHTML(
         '/html/body/table[1]/tbody/tr/td/table/tbody/tr[3]/td[4]/font[1]/b')
+    split_foods[count]['dietary_fiber_DV'] = None if result == '' else result
 
 
 def getSugars(split_foods, count):
-    split_foods[count]['sugars'] = searchNutritionFactBoxHTML(
+    result = searchNutritionFactBoxHTML(
         '/html/body/table[1]/tbody/tr/td/table/tbody/tr[4]/td[3]/font[2]')
+    split_foods[count]['sugars'] = '- - - g' if result is None else result
 
 
 def getProtein(split_foods, count):
@@ -156,27 +165,32 @@ def getIngredients(split_foods, count):
 
 
 def getAllergens(split_foods, count):
-    split_foods[count]['allergens'] = searchNutritionFactBoxHTML('/html/body/table[3]/tbody/tr/td/span[2]')
+    result = searchNutritionFactBoxHTML('/html/body/table[3]/tbody/tr/td/span[2]')
+    split_foods[count]['allergens'] = None if result == '' else result
 
 
 def getVitamin_D(split_foods, count):
-    split_foods[count]['vitamin_d'] = searchNutritionFactBoxHTML(
+    result = searchNutritionFactBoxHTML(
         '/html/body/table[1]/tbody/tr/td/table/tbody/tr[7]/td/table/tbody/tr/td[1]/table/tbody/tr/td/font[2]')
+    split_foods[count]['vitamin_d'] = None if result == '' else result
 
 
 def getCalcium(split_foods, count):
-    split_foods[count]['calcium'] = searchNutritionFactBoxHTML(
+    result = searchNutritionFactBoxHTML(
         '/html/body/table[1]/tbody/tr/td/table/tbody/tr[7]/td/table/tbody/tr/td[2]/table/tbody/tr/td/li/font[2]')
+    split_foods[count]['calcium'] = None if result == '' else result
 
 
 def getIron(split_foods, count):
-    split_foods[count]['iron'] = searchNutritionFactBoxHTML(
+    result = searchNutritionFactBoxHTML(
         '/html/body/table[1]/tbody/tr/td/table/tbody/tr[7]/td/table/tbody/tr/td[3]/table/tbody/tr/td/li/font[2]')
+    split_foods[count]['iron'] = None if result == '' else result
 
 
 def getPotassium(split_foods, count):
-    split_foods[count]['potassium'] = searchNutritionFactBoxHTML(
+    result = searchNutritionFactBoxHTML(
         '/html/body/table[1]/tbody/tr/td/table/tbody/tr[7]/td/table/tbody/tr/td[4]/table/tbody/tr/td/li/font[2]')
+    split_foods[count]['potassium'] = None if result == '' else result
 
 
 def getFoodTags(split_foods, count):
@@ -209,14 +223,14 @@ def getFoodTags(split_foods, count):
 
         for curr_tag in all_tags:
             curr_tag_text = curr_tag.get_attribute('alt')
-            if curr_tag_text == 'Egg/s':
+            if curr_tag_text == 'Egg/s':  # Egg/s changed to Eggs to avoid a possible URL path issue
                 tmp['Eggs'] = True
             else:
                 tmp[curr_tag_text] = True
 
         split_foods[count]['food_tags'] = tmp
     except:
-        split_foods[count]['food_tags'] = []
+        split_foods[count]['food_tags'] = None
 
 
 # Starting from the food item nutrition page, all nutrition facts are scrapped
@@ -251,7 +265,9 @@ def singleNutritionFact(split_foods, count):
 # Starts the process of getting and storing food info into JSON.
 ###########################################################################################
 
+###################
 # GLOBAL VARIABLES:
+###################
 isFirstInput = True  # Used to ensure that first JSON entry of a food entry does not contain a , at the start
 all_foods = {}  # Contains all the food items with their properties
 switch_for_dining_hall = {
@@ -271,7 +287,9 @@ def moveToNutritionPage(dining_hall):
     dining_hall_link.click()
 
 
+# Calls each meal time for the specific dining hall and then calls getNutritionFacts() to start scrapping all the data
 def webScrapAllMealsTimes(dining_hall):
+    # Setup: Obtaining len and name of meal times(Breakfast, Lunch, Dinner, Late_Night)
     nutrition_pages = WebDriverWait(driver, timeout=3).until(
         lambda d: d.find_elements(By.CLASS_NAME, "shortmenunutritive"))
 
@@ -283,12 +301,13 @@ def webScrapAllMealsTimes(dining_hall):
         meal_times.append(meal_time.text)
     total_meal_types = len(nutrition_pages)
 
+    # Webscrapper starts below this point using the data from setup:
     for curr_meal_type in range(total_meal_types):
         nutrition_pages = WebDriverWait(driver, timeout=3).until(
             lambda d: d.find_elements(By.CLASS_NAME, "shortmenunutritive"))
         nutrition_pages[curr_meal_type].click()
         curr_meal_time = meal_times[curr_meal_type]
-        if curr_meal_time == 'Late Night':
+        if curr_meal_time == 'Late Night':  # Changed to Late_Night to avoid space conflicts
             curr_meal_time = 'Late_Night'
         getNutritionFacts(dining_hall, curr_meal_time)
 
@@ -307,7 +326,7 @@ def getNutritionFacts(dining_hall, meal_time):
     curr_foods = []
     for i in range(1, size, 2):
         try:
-            try:
+            try:  # Result is the food type. Parses the string and sets current_food_type
                 raw_food_type = inner_table[i].find_element(By.CLASS_NAME, "longmenucolmenucat")
                 REMOVE_FRONT_DASH = 3
                 REMOVE_BACK_DASH = len(raw_food_type.text) - 3
@@ -315,7 +334,8 @@ def getNutritionFacts(dining_hall, meal_time):
                 current_food_type = parsed_food_type
 
 
-            except:
+            except:  # Result is the food name. Checks if food_name is in all_foods{}.
+                # If not, create new obj with default parameters. Else update the object.
                 food_name = inner_table[i].find_element(By.CLASS_NAME, "longmenucoldispname")
                 food_obj = all_foods.get(food_name.text)
                 if food_obj is None:
@@ -345,15 +365,17 @@ def getNutritionFacts(dining_hall, meal_time):
         except:
             print("FATAL ERROR: FOOD NAMES PARSED INCORRECTLY")
 
+    # Gets the nutrient facts for all food items that have just recently been added to all_foods{}.
+    # Recent food names are in curr_foods[]
     for count in range(len(curr_foods)):
         link = WebDriverWait(driver, timeout=3).until(
             lambda d: d.find_element(By.LINK_TEXT, curr_foods[count]['food_name']))
         link.click()
         singleNutritionFact(curr_foods, count)
-        driver.back()
+        driver.back() #Returns to list of meal time page
 
     print("Webscrap " + dining_hall + ": " + meal_time + " Successful")
-    driver.back()
+    driver.back() #Returns back to dining hall's food list page
 
 
 # Converts the list of dictionaries for split_foods into a JSON file based on the dining hall
@@ -398,8 +420,7 @@ if __name__ == '__main__':
     removeCurrentJSON()
     with open('food_results.json', 'a+') as op:
         op.write('[\n')
-    # moveToNutritionPage(dining_halls[0])
-    # webScrapAllMealsTimes(dining_halls[0])
+
     for curr_dining_hall in dining_halls:
         try:
             moveToNutritionPage(curr_dining_hall)
