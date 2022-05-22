@@ -31,11 +31,11 @@ print(platform)
 ###########################################################################################
 
 chrome_options = Options()
-# chrome_options.headless = True
+chrome_options.headless = True
 
 service = Service(executable_path=driver_path)
-# driver = webdriver.Chrome(service=service, options=chrome_options)
-driver = webdriver.Chrome(service=service)
+driver = webdriver.Chrome(service=service, options=chrome_options)
+#driver = webdriver.Chrome(service=service)
 
 driver.get("https://nutrition.sa.ucsc.edu/")  # Starting website
 
@@ -48,7 +48,7 @@ driver.get("https://nutrition.sa.ucsc.edu/")  # Starting website
 # Used as an helper for the getter functions. Returns elem based on XPATH given
 def searchNutritionFactBoxHTML(xpath_val):
     try:
-        result_elem = WebDriverWait(driver, timeout=1).until(
+        result_elem = WebDriverWait(driver, timeout=0.5).until(
             lambda d: d.find_element(By.XPATH, xpath_val))
         return result_elem.text.lstrip()
     except:
@@ -62,7 +62,7 @@ def getServing_size(split_foods, count):
 
 def getCalories(split_foods, count):
     try:
-        calories_text = WebDriverWait(driver, timeout=1).until(
+        calories_text = WebDriverWait(driver, timeout=0.5).until(
             lambda d: d.find_element(By.XPATH, '/html/body/table[1]/tbody/tr/td/table/tbody/tr[1]/td[1]/font[4]'))
 
         calories_arr = calories_text.text.split(' ')
@@ -194,30 +194,31 @@ def getPotassium(split_foods, count):
 
 
 def getFoodTags(split_foods, count):
+    tmp = {
+        'Eggs': False,
+        'Fish': False,
+        'GlutenFree': False,
+        'Dairy': False,
+        'Peanuts': False,
+        'Soy': False,
+        'Vegan': False,
+        'Vegetarian': False,
+        'Pork': False,
+        'Beef': False,
+        'Halal': False,
+        'Shellfish': False,
+        'TreeNut': False
+
+    }
+
     try:
-        food_tag_elem = WebDriverWait(driver, timeout=1).until(
+        food_tag_elem = WebDriverWait(driver, timeout=0.5).until(
             lambda d: d.find_element(By.CLASS_NAME, 'labelwebcodesvalue'))
 
-        all_tags = WebDriverWait(food_tag_elem, timeout=1).until(
+        all_tags = WebDriverWait(food_tag_elem, timeout=0.5).until(
             lambda d: d.find_elements(By.TAG_NAME, 'img'))
 
         split_foods[count]['food_tags'] = {
-
-        }
-        tmp = {
-            'Eggs': False,
-            'Fish': False,
-            'Gluten-Free': False,
-            'Dairy': False,
-            'Peanuts': False,
-            'Soy': False,
-            'Vegan': False,
-            'Vegetarian': False,
-            'Pork': False,
-            'Beef': False,
-            'Halal': False,
-            'Shellfish': False,
-            'Tree Nut': False
 
         }
 
@@ -225,12 +226,14 @@ def getFoodTags(split_foods, count):
             curr_tag_text = curr_tag.get_attribute('alt')
             if curr_tag_text == 'Egg/s':  # Egg/s changed to Eggs to avoid a possible URL path issue
                 tmp['Eggs'] = True
+            elif curr_tag_text == 'Gluten Free':
+                tmp['Gluten-Free'] = True
             else:
                 tmp[curr_tag_text] = True
 
         split_foods[count]['food_tags'] = tmp
     except:
-        split_foods[count]['food_tags'] = None
+        split_foods[count]['food_tags'] = tmp
 
 
 # Starting from the food item nutrition page, all nutrition facts are scrapped
@@ -382,11 +385,11 @@ def getNutritionFacts(dining_hall, meal_time):
 def convertToJSON():
     global all_foods
     file_name = "food_results.json"
-    ofstrm = open(file_name, 'a+')
+    ofstrm = open(file_name, 'w+')
     size = len(all_foods)
     count = 0
     global isFirstInput
-
+    ofstrm.write('[\n')
     if isFirstInput:
         isFirstInput = False
     else:
@@ -398,6 +401,7 @@ def convertToJSON():
             ofstrm.write("\n")
         if count != size:
             ofstrm.write(",\n")
+    ofstrm.write(']')
     ofstrm.close()
 
 
@@ -418,8 +422,6 @@ if __name__ == '__main__':
                     'Crown/Merrill Dining Hall', 'Porter/Kresge Dining Hall']
 
     removeCurrentJSON()
-    with open('food_results.json', 'a+') as op:
-        op.write('[\n')
 
     for curr_dining_hall in dining_halls:
         try:
@@ -431,8 +433,6 @@ if __name__ == '__main__':
 
     print("Total menu items scrapped: ", str(len(all_foods)))
     convertToJSON()
-    with open('food_results.json', 'a+') as op:
-        op.write(']')
     shutil.move('./food_results.json', './results')
 
     # driver.get("https://nutrition.sa.ucsc.edu/")
