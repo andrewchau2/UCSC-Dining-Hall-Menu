@@ -1,4 +1,4 @@
-Webscrapper for University of California, Santa Cruz dining hall.
+Webscrapper for University of California, Santa Cruz dining halls.
 
 Collects up-to-date food items and nutrient facts based on the time the webscrapper is ran.
 
